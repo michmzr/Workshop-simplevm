@@ -1,5 +1,7 @@
 package simplevm.vm;
 
+import java.lang.reflect.Field;
+
 public class Bytecode {
     private Bytecode() { 
         throw new VirtualMachine.Exception("Bytecode private ctor should never be called"); 
@@ -50,4 +52,16 @@ public class Bytecode {
     public static final int RET = 61;
     public static final int LOAD = 62;
     public static final int STORE = 63;
+
+    public static String getOpCodeName(int opcode) throws IllegalAccessException {
+        Field[] declaredFields = Bytecode.class.getDeclaredFields();
+        for (Field field : declaredFields) {
+            Class<?> t = field.getType();
+            if (field.getInt(null) == opcode) {
+                return field.getName();
+            }
+        }
+
+        return "not found";
+    }
 }

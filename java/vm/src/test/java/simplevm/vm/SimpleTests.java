@@ -67,6 +67,7 @@ class SimpleTests {
         });
 
         // Check the output for the printed output
+        assertEquals(vm.getStack().length, 0);
 
         // If we got here, with no exception, we're good
         assertTrue(vm != null);
