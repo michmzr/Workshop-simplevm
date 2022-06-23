@@ -51,6 +51,7 @@ class SimpleTests {
 
         vm.execute(new int[] {
             TRACE,
+            CONST, 130,
             NOP,
             DUMP
         });
